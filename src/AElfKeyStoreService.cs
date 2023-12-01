@@ -20,11 +20,9 @@ public class AElfKeyStoreService : KeyStoreService
     
     public byte[] DecryptKeyStoreFromFile(string password, string filePath)
     {
-        using (var file = File.OpenText(filePath))
-        {
-            var json = file.ReadToEnd();
-            return DecryptKeyStoreFromJson(password, json);
-        }
+        using var file = File.OpenText(filePath);
+        var json = file.ReadToEnd();
+        return DecryptKeyStoreFromJson(password, json);
     }
     
 }
