@@ -55,12 +55,7 @@ public class AElfKeyStoreServiceTests
     public void DecryptKeyStoreFromFile_Test()
     {
         var keystoreService = new AElfKeyStoreService();
-        var keystoreJson = keystoreService.EncryptKeyStoreAsJson(
-            Password,
-            PrivateKeyHex
-        );
-        File.WriteAllText("test.json", keystoreJson);
-        var privateKey = keystoreService.DecryptKeyStoreFromFile(Password, "test.json");
+        var privateKey = keystoreService.DecryptKeyStoreFromFile(Password, "data/VQFq9atg4fMtFLhqpVh48ZnhX8FXMGBHW8MDANPpCSHcZisU6.json");
         Assert.Equal(ByteArrayHelper.HexStringToByteArray(PrivateKeyHex), privateKey);
     }
     
